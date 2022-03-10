@@ -1,0 +1,104 @@
+<!-- LANDSCAPE -->
+<div class="landscape">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+    <span class="navbar-brand">
+      <a [routerLink]="['/dashboard']">
+      <img class="img-logo" src="../../../../../../assets/images/logos/endgame_logo_navbar.png" alt="">
+      </a>
+    </span>
+      <button class="navbar-toggler" type="button" aria-controls="navbarContent-landscape"
+              [attr.aria-expanded]="!collapsed"
+              aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent-landscape">
+        <ul class="navbar-nav ms-auto">
+
+          <!-- ACCOUNT -->
+          <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown-landscape" role="button">
+              <img class="img-user" src="../../../../../../assets/images/dashboard/user.png" alt="">
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown-landscape" class="dropdown-menu">
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Configuración</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-------------->
+<!-------------->
+<!-- PORTRAIT -->
+<div class="portrait">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+    <span class="navbar-brand">
+      <a [routerLink]="['/dashboard']">
+      <img class="img-logo" src="../../../../../../assets/images/logos/endgame_logo_navbar.png" alt="">
+      </a>
+    </span>
+      <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed"
+              aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+        <h5 class="title mt-4">MODULO DE VENTAS</h5>
+
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+            <a class="nav-link" (click)="goSalesDaily('salesDaily')">
+              VENTA DIARIA
+            </a>
+          </li>
+
+          <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+            <a class="nav-link" tabindex="0" ngbDropdownToggle id="salesDailyDropdown" role="button">
+              VENTA DIARIA
+            </a>
+            <div ngbDropdownMenu aria-labelledby="salesDailyDropdown" class="dropdown-menu">
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Another action</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Something else here</a>
+            </div>
+          </li>
+
+
+
+          <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+            <a class="nav-link" (click)="goSalesProducts('salesProducts')">
+              PRODUCTOS
+            </a>
+          </li>
+
+          <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+            <a class="nav-link" (click)="goSalesEmployees('salesEmployees')">
+              VENDEDORES
+            </a>
+          </li>
+
+          <!-- ACCOUNT -->
+          <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
+              <img class="img-user" src="../../../../../../assets/images/dashboard/user.png" alt="">
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Configuración</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+

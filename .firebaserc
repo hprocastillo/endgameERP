@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "endgameerp": {
+      "hosting": {
+        "endgameERP": [
+          "endgameerp"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "endgameerp"
+  }
+}

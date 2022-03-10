@@ -1,0 +1,41 @@
+/* MEDIA QUERIES */
+/* LANDSCAPE - 1280 x 720p */
+@media only screen and (min-device-width: 1200px) and (max-device-width: 1900px) and (orientation: landscape) {
+  .content-info {
+    width: 85%;
+  }
+  .content-btn {
+    width: 15%;
+    text-align: right;
+  }
+  .card-incomes{
+    height: 500px;
+  }
+  .card-details-outs{
+    height: 350px;
+  }
+  .card-attached{
+    height: 130px;
+  }
+}
+
+/* LANDSCAPE - 1920 x 1080p */
+@media only screen and (min-device-width: 1900px) and (orientation: landscape) {
+  .content-info {
+    width: 85%;
+  }
+
+  .content-btn {
+    width: 15%;
+    text-align: right;
+  }
+  .card-incomes{
+    height: 650px;
+  }
+  .card-details-outs{
+    height: 500px;
+  }
+  .card-attached{
+    height: 130px;
+  }
+}

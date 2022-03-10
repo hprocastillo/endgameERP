@@ -1,0 +1,129 @@
+<!--------------->
+<!--------------->
+<!-- LANDSCAPE -->
+<div class="landscape">
+  <div class="card">
+    <div class="card-header">
+      VENTA DIARIA
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let sale of listSales">
+          <div class="d-flex justify-content-between">
+            <p class="m-1">{{today.toDateString() | date:'MMM d, y'}}</p>
+            <p class="m-1 fw-bold">{{sale.amountFinal}}</p>
+          </div>
+          <div class="user">
+            <p class="text-muted m-1">Cerrado por: <span class="fw-bold">{{sale.name}}</span></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-------------->
+<!-------------->
+<!-- PORTRAIT -->
+<div class="portrait">
+
+  <!-- TOOL BOX -->
+  <ng-container *ngIf="toolBox">
+    <div class="">
+
+
+    </div>
+  </ng-container>
+
+
+
+  <!-- SEARCH BOX -->
+  <ng-container *ngIf="searchBox">
+    <div class="card mb-3">
+      <div class="card-header">
+        BUSCAR VENTA DIARIA
+      </div>
+      <div class="card-body">
+        <!-- SEARCH BY USER -->
+        <div class="searchByUser d-flex justify-content-between mb-3">
+          <div class="w-25">
+            <p class="mt-1 me-2">Por usuario</p>
+          </div>
+          <div class="w-75">
+            <input type="text" class="form-control" placeholder="Ej: operario01">
+          </div>
+        </div>
+
+        <!-- SEARCH BY RANGE DATE -->
+        <p class="mt-1 me-2">Por rango de fechas</p>
+        <div class="searchByDateSince d-flex justify-content-between mb-1">
+          <div class="w-25">
+            <p class="mt-1 me-2 text-muted">Desde:</p>
+          </div>
+          <div class="w-75">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="searchByDateUntil d-flex justify-content-between mb-3">
+          <div class="w-25">
+            <p class="mt-1 me-2 text-muted">Hasta:</p>
+          </div>
+          <div class="w-75">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button type="reset" class="btn btn-danger btn-sm me-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle me-2" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            CANCELAR
+          </button>
+          <button type="button" class="btn btn-primary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-search me-2"
+                 viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            BUSCAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+
+  <div class="card">
+    <div class="card-header">
+      VENTA DIARIA
+    </div>
+    <div class="card-body">
+
+      <!-- LIST RESULT-->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let sale of listSales">
+          <div class="d-flex justify-content-between">
+            <p class="m-1">{{today.toDateString() | date:'MMM d, y'}}</p>
+            <p class="m-1 fw-bold">{{sale.amountFinal}}</p>
+          </div>
+          <div class="user">
+            <p class="text-muted m-1">Cerrado por: <span class="fw-bold">{{sale.name}}</span></p>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

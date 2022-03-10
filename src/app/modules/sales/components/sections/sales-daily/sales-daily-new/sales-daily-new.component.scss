@@ -1,0 +1,32 @@
+/* MEDIA QUERIES */
+/* PORTRAIT - 325 x 1000 */
+@media only screen and (min-device-width: 325px) and (max-device-width: 1000px) and (orientation: portrait) {
+  .card {
+    height: 500px;
+  }
+  #txtDetailsOuts {
+    height: 110px;
+  }
+}
+
+/* LANDSCAPE - 1280 x 720p */
+@media only screen and (min-device-width: 1200px) and (max-device-width: 1900px) and (orientation: landscape) {
+  .card {
+    height: 500px;
+  }
+  #txtDetailsOuts {
+    height: 110px;
+  }
+}
+
+/* LANDSCAPE - 1920 x 1080p */
+@media only screen and (min-device-width: 1900px) and (orientation: landscape) {
+  .card {
+    height: 650px;
+  }
+
+  #txtDetailsOuts {
+    height: 200px;
+  }
+
+}

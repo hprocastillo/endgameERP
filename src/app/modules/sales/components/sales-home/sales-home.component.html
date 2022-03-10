@@ -1,0 +1,70 @@
+<app-sales-navbar (page)="getPage($event)"></app-sales-navbar>
+
+<!-------------->
+<!-------------->
+<!-- LANDSCAPE-->
+<div class="landscape">
+  <div class="container pt-3">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+          <app-sales-sidebar (page)="getPage($event)"></app-sales-sidebar>
+        </div>
+      </div>
+
+      <div class="col-lg-9">
+        <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+
+          <ng-container *ngIf="pageSalesDaily">
+            <app-sales-daily></app-sales-daily>
+          </ng-container>
+
+          <ng-container *ngIf="pageSalesView">
+            <app-sales-daily-view></app-sales-daily-view>
+          </ng-container>
+
+          <ng-container *ngIf="pageSalesProducts">
+            <app-sales-products></app-sales-products>
+          </ng-container>
+
+          <ng-container *ngIf="pageSalesEmployees">
+            <app-sales-employees></app-sales-employees>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------->
+<!-------------->
+<!-- PORTRAIT -->
+<div class="portrait">
+  <div class="container pt-3">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+
+          <ng-container *ngIf="pageSalesDaily">
+            <app-sales-daily></app-sales-daily>
+          </ng-container>
+
+          <ng-container *ngIf="pageSalesView">
+            <app-sales-daily-view></app-sales-daily-view>
+          </ng-container>
+
+          <ng-container *ngIf="pageSalesProducts">
+            <app-sales-products></app-sales-products>
+          </ng-container>
+
+          <ng-container *ngIf="pageSalesEmployees">
+            <app-sales-employees></app-sales-employees>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
