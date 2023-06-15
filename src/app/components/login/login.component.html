@@ -1,0 +1,89 @@
+<!-- PHONE DESIGN -->
+<div class="phone">
+  <div class="row vh-100">
+    <div class="col-12 bg-dark text-center">
+
+      <img class="m-3" ngSrc="./assets/images/modules/login/endgame-phone.png" alt="Endgame Logo" height="100"
+           width="195" priority>
+
+      <div class="card shadow m-3 p-3 bg-body rounded border-0">
+
+        <p class="fs-3">Inicio de sesión</p>
+
+        <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+          <!-- EMAIL -->
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="emailTXT_phone"
+              placeholder="Correo electrónico"
+              formControlName="email">
+            <label for="emailTXT_phone">Correo electrónico</label>
+          </div>
+          <!-- PASSWORD -->
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="passwordTXT_phone"
+              placeholder="Contraseña"
+              formControlName="password">
+            <label for="passwordTXT_phone">Contraseña</label>
+          </div>
+          <!-- BUTTON SUBMIT -->
+          <button type="submit" class="btn btn-dark mb-3 w-100">
+            INGRESAR
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- DESKTOP DESIGN -->
+<div class="desktop">
+  <div class="row vh-100">
+    <div class="col-xl-6 bg-dark text-center">
+      <img class="mt-xl-5 img-fluid" ngSrc="./assets/images/modules/login/endgame-desktop.png" alt="" height="257"
+           width="500" priority>
+    </div>
+
+    <div class="col-xl-6 pt-5">
+      <div class="card w-50 m-auto text-center shadow p-3 border-0 bg-body-tertiary rounded">
+
+        <p class="fs-4 mt-3">Iniciar sesión</p>
+
+        <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+          <!-- EMAIL -->
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="emailTXT_desktop"
+              placeholder="Correo electrónico"
+              formControlName="email">
+            <label for="emailTXT_desktop">Correo electrónico</label>
+          </div>
+          <!-- PASSWORD -->
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="passwordTXT_desktop"
+              placeholder="Contraseña"
+              formControlName="password">
+            <label for="passwordTXT_desktop">Contraseña</label>
+          </div>
+          <!-- BUTTON SUBMIT -->
+          <button type="submit" class="btn btn-dark w-100 mb-3">
+            INGRESAR
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

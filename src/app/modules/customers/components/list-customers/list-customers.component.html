@@ -1,0 +1,185 @@
+<!------------------------------------->
+<!-- PHONE DESIGN --- LIST CUSTOMERS -->
+<!-- CHECKED 100% --------------------->
+<!------------------------------------->
+<div class="phone">
+
+  <!-- HEADER -->
+  <div class="row">
+    <div class="col-10">
+      <p class="fs-1 fw-bold">Clientes</p>
+    </div>
+    <div class="col-2">
+      <img class="img-fluid" ngSrc="./assets/images/modules/dashboard/customers.png" alt="Clientes" height="128"
+           width="128" priority>
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="row">
+    <div class="col-12">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="searchText"
+          placeholder="Buscar Cliente">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIST -->
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group list-group-flush" style="margin-bottom: 100px">
+        <li class="list-group-item border-0 ps-0 pe-0"
+            *ngFor="let customer of listCustomers | searchCustomer:searchText"
+            (click)="getCustomerSelected(customer)">
+
+          <app-list-customers-item [customer]="customer"></app-list-customers-item>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER - BUTTONS -->
+  <div class="row fixed-bottom bg-white p-3">
+    <div class="col-12 d-flex justify-content-between">
+
+      <!-- BUTTON BACK -->
+      <button
+        [routerLink]="'/dashboard'"
+        type="button"
+        class="btn btn-primary rounded-circle"
+      >
+        <i class="bi bi-arrow-90deg-left fs-3"></i>
+      </button>
+
+      <!-- BUTTON NEW CUSTOMER -->
+      <button
+        (click)="getTemplate('newCustomer')"
+        type="button"
+        class="btn btn-primary rounded-circle"
+      >
+        <i class="bi bi-plus-lg fs-3"></i>
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!--------------------------------------->
+<!-- DESKTOP DESIGN --- LIST CUSTOMERS -->
+<!--------------------------------------->
+<div class="desktop">
+
+  <!-- HEADER SECTION -->
+  <div class="card shadow p-2 mb-3 rounded">
+    <div class="row">
+      <!-- TITLE -->
+      <div class="col-xl-6 d-flex justify-content-xl-start">
+        <p class="fs-4 fw-bold ms-2 m-0">Clientes</p>
+        <img class="ms-2" ngSrc="./assets/images/modules/dashboard/customers.png" alt="Clientes" height="32" width="32"
+             priority>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="col-xl-6 d-flex justify-content-xl-end">
+        <!-- BUTTON BACK -->
+        <button
+          [routerLink]="'/dashboard'"
+          type="button"
+          class="btn btn-secondary me-2">
+          <i class="bi bi-arrow-left"></i>
+          Atrás
+        </button>
+
+        <!-- BUTTON ADD -->
+        <button
+          (click)="getTemplate('newCustomer')"
+          type="button"
+          class="btn btn-primary">
+          <i class="bi bi-person-fill-add"></i>
+          Nuevo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE CUSTOMERS -->
+  <div class="card shadow p-3 rounded" style="height: 600px">
+
+    <!-- SEARCH -->
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control border-primary-subtle"
+            [(ngModel)]="searchText"
+            placeholder="Buscar Cliente por nombres y apellidos o correo electrónico">
+          <span class="input-group-text border-primary-subtle"><i class="bi bi-search"></i></span>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- TABLE  -->
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="table-responsive mb-3">
+          <table class="table table-striped">
+            <thead>
+            <tr class="text-nowrap text-center">
+              <th scope="col">#</th>
+              <th scope="col"></th>
+              <th scope="col">Nombres y Apellidos</th>
+              <th scope="col">Correo electrónico</th>
+              <th scope="col">Teléfono</th>
+              <th scope="col">DNI</th>
+              <th scope="col">Fecha de nacimiento</th>
+              <th scope="col">Facebook</th>
+              <th scope="col">Instagram</th>
+              <th scope="col">Usuario abonado</th>
+              <th scope="col">Fecha última actualización</th>
+              <th scope="col">Fecha de registro</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-nowrap text-center"
+                *ngFor="let customer of listCustomers | searchCustomer:searchText | slice: (page-1) * pageSize : page * pageSize; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                <img style="height: 48px;cursor:pointer" (click)="getCustomerSelected(customer)"
+                     src="{{customer.photoUrl1}}"
+                     alt="{{customer.fullName}}">
+              </td>
+              <td>{{customer.fullName}}</td>
+              <td>{{customer.email}}</td>
+              <td>{{customer.phone}}</td>
+              <td>{{customer.dni}}</td>
+              <td>{{customer.birthDay.toMillis() | date:'MMM d, y'}}</td>
+
+              <td *ngIf="customer.facebookUrl !== ''">{{customer.facebookUrl}}</td>
+              <td class="text-danger" *ngIf="customer.facebookUrl === ''">No registrado</td>
+
+              <td *ngIf="customer.instagramUrl !== ''">{{customer.instagramUrl}}</td>
+              <td class="text-danger" *ngIf="customer.instagramUrl === ''">No registrado</td>
+
+              <td *ngIf="customer.userSystem !== ''">{{customer.userSystem}}</td>
+              <td class="text-danger" *ngIf="customer.userSystem === ''">No registrado</td>
+
+              <td>{{customer.updatedAt.toMillis() | date:'MMM d, y'}}</td>
+              <td>{{customer.createdAt.toMillis() | date:'MMM d, y'}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <ngb-pagination [collectionSize]="listCustomers.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
+  </div>
+</div>

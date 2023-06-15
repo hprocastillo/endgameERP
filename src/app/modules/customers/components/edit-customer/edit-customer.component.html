@@ -1,0 +1,472 @@
+<!------------------------------------->
+<!-- PHONE DESIGN --- EDIT CUSTOMER --->
+<!-- CHECKED 100% --------------------->
+<!------------------------------------->
+<div class="phone" style="margin-bottom: 100px">
+
+  <!-- HEADER -->
+  <div class="row">
+    <div class="col-10">
+      <p class="fs-1 fw-bold">Editar Cliente</p>
+    </div>
+    <div class="col-2">
+      <img class="img-fluid" ngSrc="./assets/images/modules/dashboard/customers.png" alt="Clientes" height="128"
+           width="128" priority>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form">
+
+    <!-- FULL NAME -->
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="fullName-IPH"
+        [(ngModel)]="customer.fullName"
+        placeholder="Nombres y apellidos">
+      <label for="fullName-IPH">Nombres y apellidos</label>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="email-IPH"
+        [(ngModel)]="customer.email"
+        placeholder="Correo electrónico">
+      <label for="email-IPH">Correo electrónico</label>
+    </div>
+
+    <!-- BIRTHDAY AND DNI -->
+    <div class="row mb-3">
+      <!-- BIRTHDAY -->
+      <div class="col-6">
+        <div class="form-floating">
+          <input
+            (change)="getBirthday($event.target)"
+            [value]="[birthdayValueDefault]"
+            type="date"
+            class="form-control"
+            id="birthday-IPH"
+            placeholder="Fecha de nacimiento">
+          <label for="birthday-IPH">Fecha de nacimiento</label>
+        </div>
+      </div>
+      <!-- DNI -->
+      <div class="col-6">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="dni-IPH"
+            [(ngModel)]="customer.dni"
+            placeholder="DNI">
+          <label for="dni-IPH">DNI</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHONE AND USER SYSTEM -->
+    <div class="row mb-3">
+      <!-- PHONE -->
+      <div class="col-6">
+        <div class="form-floating">
+          <input
+            type="tel"
+            class="form-control"
+            id="phone-IPH"
+            [(ngModel)]="customer.phone"
+            placeholder="Teléfono">
+          <label for="phone-IPH">Teléfono</label>
+        </div>
+      </div>
+      <!-- USER SYSTEM -->
+      <div class="col-6">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="userSystem-IPH"
+            [(ngModel)]="customer.userSystem"
+            placeholder="Usuario abonado">
+          <label for="userSystem-IPH">Usuario abonado</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACEBOOK AND INSTAGRAM -->
+    <div class="row mb-3">
+      <!-- FACEBOOK -->
+      <div class="col-6">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="facebook-IPH"
+            [(ngModel)]="customer.facebookUrl"
+            placeholder="Facebook">
+          <label for="facebook-IPH">Faceboook</label>
+        </div>
+      </div>
+      <!-- INSTAGRAM -->
+      <div class="col-6">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="instagram-IPH"
+            [(ngModel)]="customer.instagramUrl"
+            placeholder="Instagram">
+          <label for="instagram-IPH">Instagram</label>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    <!-- PHOTOS -->
+    <div class="row mb-3">
+      <div class="col-4 border-end">
+
+        <!-- IMAGE PREVIEW 1 - PHOTO DB 1 -->
+        <div class="container-camera text-center">
+          <ng-container *ngIf="photo1_preview && photo1_preview !== ''; else imageDB1">
+            <input type="file" (change)="take_photo1($event)" accept="image/*;capture=camera">
+            <img class="img-fluid w-75" src="{{photo1_preview}}" alt="{{photo1_file.name}}">
+            <p class="text-muted">Foto Cliente</p>
+          </ng-container>
+
+          <ng-template #imageDB1>
+            <input type="file" (change)="take_photo1($event)" accept="image/*;capture=camera">
+            <img class="img-fluid w-75" src="{{customer.photoUrl1}}" alt="{{customer.fullName}}">
+            <p class="text-muted">Foto Cliente</p>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-4 border-end">
+
+        <!-- IMAGE PREVIEW 2 - PHOTO DB 2 -->
+        <div class="container-camera text-center">
+          <ng-container *ngIf="photo2_preview && photo2_preview !== ''; else imageDB2">
+            <input type="file" (change)="take_photo2($event)" accept="image/*;capture=camera">
+            <img class="img-fluid w-75" src="{{photo2_preview}}" alt="{{photo2_file.name}}">
+            <p class="text-muted">Foto DNI</p>
+          </ng-container>
+
+          <ng-template #imageDB2>
+            <input type="file" (change)="take_photo2($event)" accept="image/*;capture=camera">
+            <img class="img-fluid w-75" src="{{customer.photoUrl2}}" alt="{{customer.fullName}}">
+            <p class="text-muted">Foto DNI</p>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-4">
+        <!-- IMAGE PREVIEW 3 - PHOTO DB 3 -->
+        <div class="container-camera text-center">
+          <ng-container *ngIf="photo3_preview && photo3_preview !== ''; else imageDB3">
+            <input type="file" (change)="take_photo3($event)" accept="image/*;capture=camera">
+            <img class="img-fluid w-75" src="{{photo3_preview}}" alt="{{photo3_file.name}}">
+            <p class="text-muted">Foto Redes</p>
+          </ng-container>
+
+          <ng-template #imageDB3>
+            <input type="file" (change)="take_photo3($event)" accept="image/*;capture=camera">
+            <img class="img-fluid w-75" src="{{customer.photoUrl3}}" alt="{{customer.fullName}}">
+            <p class="text-muted">Foto Redes</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEXT HELP -->
+    <div class="row">
+      <div class="col-12">
+        <p class="small text-center text-muted">(Haga click en la foto que desea reemplazar).</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER - BUTTONS -->
+  <div class="row fixed-bottom bg-white p-3">
+    <div class="col-6 text-center">
+      <!-- BUTTON CANCEL -->
+      <button
+        type="reset"
+        class="btn btn-danger w-100"
+        (click)="getTemplate('viewCustomer')">
+        <i class="bi bi-x-circle-fill me-2"></i>
+        Cancelar
+      </button>
+    </div>
+
+    <div class="col-6 text-center">
+      <!-- BUTTON SAVE /W LOADING EFFECT -->
+      <button
+        *ngIf="loadingEffect"
+        type="button"
+        class="btn btn-success w-100" disabled>
+        <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+        Guardando...
+      </button>
+
+      <!-- BUTTON SAVE -->
+      <button
+        *ngIf="!loadingEffect"
+        (click)="onSubmit(customer,firebaseUser)"
+        type="button"
+        class="btn btn-success w-100">
+        <i class="bi bi-hdd-fill me-2"></i>
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!------------------------------------------------------>
+<!------------------ DESKTOP DESIGN -------------------->
+<div class="desktop p-3">
+
+  <!-- HEADER SECTION -->
+  <div class="card shadow p-2 mb-3 bg-body-tertiary rounded">
+    <div class="row">
+      <!-- TITLE -->
+      <div class="col-xl-6 d-flex justify-content-xl-start">
+        <p class="fs-4 fw-bold ms-2 m-0">Editar Cliente</p>
+        <img class="ms-2" ngSrc="./assets/images/modules/dashboard/customers.png" alt="Clientes" height="32"
+             width="32"
+             priority>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="col-xl-6 d-flex justify-content-xl-end">
+        <!-- BUTTON CANCEL -->
+        <button
+          type="reset"
+          class="btn btn-danger me-2"
+          (click)="getTemplate('viewCustomer')">
+          <i class="bi bi-x-circle-fill me-2"></i>
+          Cancelar
+        </button>
+
+        <!-- BUTTON SAVE /W LOADING EFFECT -->
+        <button
+          *ngIf="loadingEffect"
+          type="button"
+          class="btn btn-success" disabled>
+          <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+          Guardando...
+        </button>
+
+        <!-- BUTTON SAVE -->
+        <button
+          *ngIf="!loadingEffect"
+          (click)="onSubmit(customer,firebaseUser)"
+          type="submit"
+          class="btn btn-success">
+          <i class="bi bi-hdd-fill me-2"></i>
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--------------------- FORM ----------------------->
+  <!------------- Input Desktop = IDK ---------------->
+  <div class="row">
+    <!-- DATA CUSTOMER -->
+    <div class="col-xl-5">
+      <div class="card shadow p-3 bg-body-tertiary rounded" style="height: 550px">
+
+        <!-- FULL NAME -->
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="fullName-IDK"
+            [(ngModel)]="customer.fullName"
+            placeholder="Nombres y apellidos">
+          <label for="fullName-IDK">Nombres y apellidos</label>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="email-IDK"
+            [(ngModel)]="customer.email"
+            placeholder="Correo electrónico">
+          <label for="email-IDK">Correo electrónico</label>
+        </div>
+
+        <!-- BIRTHDAY AND DNI -->
+        <div class="row mb-3">
+          <!-- BIRTHDAY -->
+          <div class="col-6">
+            <div class="form-floating">
+              <input
+                (change)="getBirthday($event.target)"
+                [value]="[birthdayValueDefault]"
+                type="date"
+                class="form-control"
+                id="birthday-IDK"
+                placeholder="Fecha de nacimiento:">
+              <label for="birthday-IDK">Fecha de nacimiento:</label>
+            </div>
+          </div>
+          <!-- DNI -->
+          <div class="col-6">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="dni-IDK"
+                [(ngModel)]="customer.dni"
+                placeholder="DNI">
+              <label for="dni-IDK">DNI</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHONE AND USER SYSTEM -->
+        <div class="row mb-3">
+          <!-- PHONE -->
+          <div class="col-6">
+            <div class="form-floating">
+              <input
+                type="tel"
+                class="form-control"
+                id="phone-IDK"
+                [(ngModel)]="customer.phone"
+                placeholder="Teléfono">
+              <label for="phone-IDK">Teléfono</label>
+            </div>
+          </div>
+          <!-- USER SYSTEM -->
+          <div class="col-6">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="userSystem-IDK"
+                [(ngModel)]="customer.userSystem"
+                placeholder="Usuario abonado">
+              <label for="userSystem-IDK">Usuario abonado</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- FACEBOOK AND INSTAGRAM -->
+        <div class="row mb-3">
+          <!-- FACEBOOK -->
+          <div class="col-6">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="facebook-IDK"
+                [(ngModel)]="customer.facebookUrl"
+                placeholder="Facebook">
+              <label for="facebook-IDK">Faceboook</label>
+            </div>
+          </div>
+          <!-- INSTAGRAM -->
+          <div class="col-6">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="instagram-IDK"
+                [(ngModel)]="customer.instagramUrl"
+                placeholder="Instagram">
+              <label for="instagram-IDK">Instagram</label>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- UPLOAD PHOTOS -->
+    <div class="col-xl-7">
+      <div class="card shadow p-3 bg-body-tertiary rounded" style="height: 550px">
+        <!-- TITLE SECTION -->
+        <p class="fs-4 fw-bold text-center mb-0">Subir Fotos</p>
+        <hr class="text-muted">
+
+        <!-- PHOTOS -->
+        <div class="row">
+          <!-- PHOTO 1 -->
+          <div class="col-xl-4 text-center border-end">
+            <!-- CAMERA -->
+            <div class="container-camera-desktop" style="margin-bottom: 100px">
+              <input type="file" (change)="take_photo1($event)" accept="image/*;capture=camera">
+              <img class="img-fluid w-50" src="./assets/images/general/camera.png" alt="Camera">
+              <p class="text-muted">Foto Cliente</p>
+            </div>
+
+            <!-- PREVIEW -->
+            <div class="image-preview">
+              <ng-container *ngIf="photo1_preview && photo1_preview !== ''; else imageDB1Desktop">
+                <img class="img-fluid" style="max-width: 128px" src="{{photo1_preview}}" alt="{{photo1_file.name}}">
+              </ng-container>
+
+              <ng-template #imageDB1Desktop>
+                <img class="img-fluid" style="max-width: 128px" src="{{customer.photoUrl1}}"
+                     alt="{{customer.fullName}}">
+              </ng-template>
+            </div>
+          </div>
+
+          <!-- PHOTO 2 -->
+          <div class="col-xl-4 text-center border-end">
+            <!-- CAMERA -->
+            <div class="container-camera-desktop" style="margin-bottom: 100px">
+              <input type="file" (change)="take_photo2($event)" accept="image/*;capture=camera">
+              <img class="img-fluid w-50" src="./assets/images/general/camera.png" alt="Camera">
+              <p class="text-muted">Foto DNI</p>
+            </div>
+
+            <!-- PREVIEW -->
+            <div class="image-preview">
+              <ng-container *ngIf="photo2_preview && photo2_preview !== ''; else imageDB2Desktop">
+                <img class="img-fluid" style="max-width: 128px" src="{{photo2_preview}}" alt="{{photo2_file.name}}">
+              </ng-container>
+              <ng-template #imageDB2Desktop>
+                <img class="img-fluid" style="max-width: 128px" src="{{customer.photoUrl2}}"
+                     alt="{{customer.fullName}}">
+              </ng-template>
+            </div>
+          </div>
+
+          <!-- PHOTO 3 -->
+          <div class="col-xl-4 text-center">
+            <!-- CAMERA -->
+            <div class="container-camera-desktop" style="margin-bottom: 100px">
+              <input type="file" (change)="take_photo3($event)" accept="image/*;capture=camera">
+              <img class="img-fluid w-50" src="./assets/images/general/camera.png" alt="Camera">
+              <p class="text-muted">Foto Redes</p>
+            </div>
+
+            <!-- PREVIEW -->
+            <div class="image-preview">
+              <ng-container *ngIf="photo3_preview && photo3_preview !== ''; else imageDB3Desktop">
+                <img class="img-fluid" style="max-width: 128px" src="{{photo3_preview}}" alt="{{photo3_file.name}}">
+              </ng-container>
+              <ng-template #imageDB3Desktop>
+                <img class="img-fluid" style="max-width: 128px" src="{{customer.photoUrl3}}"
+                     alt="{{customer.fullName}}">
+              </ng-template>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

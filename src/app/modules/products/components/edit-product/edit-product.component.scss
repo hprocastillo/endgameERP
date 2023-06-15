@@ -1,0 +1,47 @@
+.container-camera {
+  margin: auto;
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+}
+
+.container-camera input[type=file] {
+  top: 0;
+  left: 0;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0;
+}
+
+.container-preview {
+  margin: auto;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.container-preview button[type=button] {
+  top: 0;
+  right: 0;
+  position: absolute;
+  //min-width: 100%;
+  //min-height: 100%;
+  //opacity: 0;
+}
+
+/*****************/
+/** Desktop CSS **/
+.container-camera-desktop {
+  position: relative;
+  overflow: hidden;
+}
+
+.container-camera-desktop input[type=file] {
+  top: 0;
+  left: 0;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0;
+}

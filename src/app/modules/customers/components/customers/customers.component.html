@@ -1,0 +1,41 @@
+<!-- LOGGED -->
+<ng-container *ngIf="authService.user$ | async as firebaseUser; else noLogged">
+
+  <!-- LIST CUSTOMERS - TEMPLATE -->
+  <app-list-customers
+    *ngIf="template === 'listCustomers'"
+    [listCustomers]="listCustomers"
+    (customerSelected)="getCustomerSelected($event)"
+    (outTemplate)="getTemplate($event)"
+  ></app-list-customers>
+
+
+  <!-- VIEW CUSTOMER - TEMPLATE -->
+  <app-view-customer
+    *ngIf="template === 'viewCustomer'"
+    [customer]="customerSelected"
+    (outTemplate)="getTemplate($event)"
+  ></app-view-customer>
+
+
+  <!-- EDIT CUSTOMER FORM - TEMPLATE -->
+  <app-edit-customer
+    *ngIf="template === 'editCustomer'"
+    [firebaseUser]="firebaseUser"
+    [customer]="customerSelected"
+    (outTemplate)="getTemplate($event)"
+  ></app-edit-customer>
+
+
+  <!-- NEW CUSTOMER FORM - TEMPLATE -->
+  <app-new-customer
+    *ngIf="template === 'newCustomer'"
+    [firebaseUser]="firebaseUser"
+    (btnCancel)="getTemplate($event)"
+    (btnSave)="getTemplate($event)"
+  ></app-new-customer>
+</ng-container>
+
+
+<!-- NO LOGGED -->
+<ng-template #noLogged></ng-template>

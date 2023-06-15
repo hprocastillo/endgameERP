@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap';
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+/*  MEDIA QUERIES  */
+/*  850 >> PHONES >> 350  */
+@media only screen and (min-width: 350px) and (max-width: 850px) and (orientation: portrait) {
+  .tablet {
+    display: none;
+  }
+  .desktop {
+    display: none;
+  }
+
+  .container-camera {
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .container-camera input[type=file] {
+    top: 0;
+    left: 0;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+  }
+}
+
+/*  950 >> PHONES - TABLETS >> 650  */
+@media only screen and (min-width: 650px) and (max-width: 950px) and (orientation: landscape) {
+  .phone {
+    display: none;
+  }
+  .desktop {
+    display: none;
+  }
+}
+
+/*  1250 >> TABLETS >> 1000  */
+@media only screen and (min-width: 1000px) and (max-width: 1250px) and (orientation: landscape) {
+  .phone {
+    display: none;
+  }
+  .desktop {
+    display: none;
+  }
+}
+
+/*  1850 >> DESKTOP >> 1250  */
+@media only screen and (min-width: 1250px) and (max-width: 1850px) and (orientation: landscape) {
+  .phone {
+    display: none;
+  }
+  .tablet {
+    display: none;
+  }
+  .container-camera {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container-camera[type=file] {
+    top: 0;
+    left: 0;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+  }
+}
+
+/*  DESKTOP >> 1920  */
+@media only screen and (min-width: 1900px) and (orientation: landscape) {
+  .phone {
+    display: none;
+  }
+  .tablet {
+    display: none;
+  }
+}

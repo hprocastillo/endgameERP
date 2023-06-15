@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "endgame-system": {
+      "hosting": {
+        "endgameERP": [
+          "endgame-system"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "endgame-system"
+  }
+}

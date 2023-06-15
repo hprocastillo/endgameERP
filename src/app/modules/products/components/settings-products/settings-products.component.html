@@ -1,0 +1,27 @@
+<!-- TITLE COMPONENTS -->
+<app-title-products [title]="'Ajustes'"></app-title-products>
+
+<!-- SEARCH PRODUCT -->
+<div class="row mb-3">
+  <div class="col-12 input-group">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchText"
+      placeholder="Buscar producto">
+    <span class="input-group-text"><i class="bi bi-search"></i></span>
+  </div>
+</div>
+
+
+<!-- BOTTOM BUTTONS -->
+<div class="row fixed-bottom bg-white p-3">
+  <div class="col-12 d-flex justify-content-between">
+
+    <!-- BUTTON BACK -->
+    <button type="button" class="btn btn-primary rounded-circle" (click)="goToTemplate('listProducts')">
+      <i class="bi bi-arrow-90deg-left fs-3"></i>
+    </button>
+
+  </div>
+</div>

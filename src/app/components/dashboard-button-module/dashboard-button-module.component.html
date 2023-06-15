@@ -1,0 +1,33 @@
+<!-------------------------------------->
+<!-- PHONE DESIGN -- DASHBOARD BUTTON -->
+<!-- CHECKED 100% ---------------------->
+<!-------------------------------------->
+<div class="phone">
+  <div class="card shadow p-3 rounded border-0"
+       style="cursor: pointer"
+       (click)="goModule(urlModule)">
+
+    <img class="m-auto" ngSrc="{{iconModule}}" alt="{{nameModule}}" height="128" width="128" priority>
+    <p class="fs-3 fw-bold m-auto">{{nameModule}}</p>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!---------------------------------------->
+<!-- DESKTOP DESIGN -- DASHBOARD BUTTON -->
+<!---------------------------------------->
+<div class="desktop">
+  <div (click)="goModule(urlModule)" class="card shadow p-3 bg-body-tertiary rounded">
+
+    <img class="m-auto" ngSrc="{{iconModule}}" alt="{{nameModule}}" height="128" width="128" priority>
+    <p class="fs-4 fw-medium m-auto mb-3">{{nameModule}}</p>
+
+  </div>
+</div>

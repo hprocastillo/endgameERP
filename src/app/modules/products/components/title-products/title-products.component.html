@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-10">
+    <p class="fs-3 fw-bold">{{title}}</p>
+  </div>
+
+  <div class="col-2">
+    <ng-container *ngIf="title === 'Productos'">
+      <img
+        class="img-fluid"
+        ngSrc="./assets/images/modules/dashboard/products.png"
+        alt="Productos"
+        height="128"
+        width="128">
+    </ng-container>
+
+    <ng-container *ngIf="title === 'Ajustes'">
+      <img
+        class="img-fluid"
+        ngSrc="./assets/images/general/settings.png"
+        alt="Ajustes"
+        height="128"
+        width="128">
+
+    </ng-container>
+  </div>
+</div>
