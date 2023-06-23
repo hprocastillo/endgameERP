@@ -1,20 +1,17 @@
-<!------------------------------------>
-<!-- PHONE DESIGN --- LIST PRODUCTS -->
-<!------------------------------------>
-<div class="phone p-2">
+<!-------------------------------------------------->
+<!-------- PHONE DESIGN --- LIST PRODUCTS ---------->
+<!---------------- CHECKED 100% -------------------->
+<!-------------------------------------------------->
+<div class="phone">
 
   <!-- HEADER -->
-  <div class="row">
-    <div class="col-10">
-      <p class="fs-1 fw-bold">Productos</p>
-    </div>
-    <div class="col-2">
-      <img class="img-fluid" src="./assets/images/modules/dashboard/products.png" alt="Clientes">
-    </div>
-  </div>
+  <app-header-products
+    [title]="'Productos'"
+    [icon]="'./assets/images/modules/dashboard/products.png'"
+  ></app-header-products>
 
   <!-- SEARCH -->
-  <div class="row mb-3">
+  <div class="row">
     <div class="col-12">
       <div class="input-group">
         <input
@@ -31,10 +28,10 @@
   <div class="row">
     <div class="col-12">
       <ul class="list-group list-group-flush" style="margin-bottom: 100px">
-        <li class="list-group-item border-0 p-0 mb-3"
+        <li class="list-group-item border-0 p-0 mt-3"
             *ngFor="let product of  listProducts | searchProduct:searchText"
-            (click)="getProduct(product)"
-        >
+            (click)="getProductSelected(product)">
+
           <app-list-products-item [product]="product"></app-list-products-item>
         </li>
       </ul>
@@ -44,7 +41,6 @@
   <!-- FOOTER - BUTTONS -->
   <div class="row fixed-bottom bg-white p-3">
     <div class="col-12 d-flex justify-content-between">
-
       <!-- BUTTON BACK -->
       <button
         [routerLink]="'/dashboard'"
@@ -71,11 +67,13 @@
       >
         <i class="bi bi-plus-lg fs-3"></i>
       </button>
-
     </div>
   </div>
-</div>
 
+</div>
+<!----------------------------------------------------->
+<!---------------- END -- PHONE DESIGN ---------------->
+<!----------------------------------------------------->
 
 
 <!-------------------------------------->
@@ -158,7 +156,7 @@
                 *ngFor="let product of listProducts | searchProduct:searchText; index as i">
               <th scope="row">{{ i + 1 }}</th>
               <td>
-                <img (click)="getProduct(product)" style="height: 48px" src="{{product.photoUrl}}"
+                <img (click)="getProductSelected(product)" style="height: 48px" src="{{product.photoUrl}}"
                      alt="{{product.description}}">
               </td>
               <td>{{product.category}}</td>

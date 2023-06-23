@@ -1,12 +1,13 @@
-<!------------------------------------------>
-<!-- VIEW PRODUCT TEMPLATE - PHONE DESIGN -->
-<!------------------------------------------>
-<div class="phone p-2">
+<!-------------------------------------------------->
+<!-------- PHONE DESIGN ----- VIEW PRODUCT --------->
+<!---------------- CHECKED 100% -------------------->
+<!-------------------------------------------------->
+<div class="phone">
 
   <!-- BRAND -->
   <div class="row">
     <div class="col-12 text-center">
-      <p class="fs-1 m-0">{{product.brand}}</p>
+      <p class="fs-1">{{product.brand}}</p>
     </div>
   </div>
 
@@ -34,89 +35,61 @@
     <div class="col-12">
       <ul class="list-group list-group-flush" style="margin-bottom: 100px">
 
-        <!-- CATEGORY -->
+        <!-- CATEGORY AND DESCRIPTION -->
         <li class="list-group-item border-0">
-          <p class="small text-muted m-0">Categoria:</p>
-          <p class="fw-bold m-0">{{product.category}}</p>
+          <div class="row">
+            <!-- CATEGORY -->
+            <div class="col-6">
+              <p class="small text-muted mb-0">Categoria:</p>
+              <p class="fw-bold">{{product.category}}</p>
+            </div>
+            <!-- DESCRIPTION -->
+            <div class="col-6">
+              <p class="small text-muted mb-0">Descripción:</p>
+              <p class="fw-bold">{{product.description}}</p>
+            </div>
+          </div>
         </li>
 
-        <!-- DESCRIPTION -->
+        <!-- PRICE AND STOCK -->
         <li class="list-group-item border-0">
-          <p class="small text-muted m-0">Descripción:</p>
-          <p class="fw-bold m-0">{{product.description}}</p>
+          <div class="row">
+            <!-- PRICE -->
+            <div class="col-6">
+              <p class="small text-muted mb-0">Precio:</p>
+              <p class="fw-bold">S/. &nbsp; {{product.price}}</p>
+            </div>
+            <!-- STOCK -->
+            <div class="col-6">
+              <p class="small text-muted mb-0">Stock:</p>
+              <p class="text-danger" *ngIf="product.stock === 0">Sin stock.</p>
+              <p class="fw-bold" *ngIf="product.stock === 1">{{product.stock}} &nbsp; Unidad.</p>
+              <p class="fw-bold" *ngIf="product.stock > 1">{{product.stock}} &nbsp; Unidades.</p>
+            </div>
+          </div>
         </li>
 
-        <!-- PRICE -->
+        <!-- CREATED AND UPDATED -->
         <li class="list-group-item border-0">
-          <p class="small text-muted m-0">Precio:</p>
-          <p class="fw-bold m-0">S/. &nbsp; {{product.price}}</p>
+          <div class="row">
+            <!-- CREATED AT-->
+            <div class="col-6">
+              <p class="small text-muted mb-0">Registrado:</p>
+              <p class="fw-bold">{{product.createdAt.toMillis() | date:'MMMM d, y'}}</p>
+            </div>
+            <!-- UPDATED AT-->
+            <div class="col-6">
+              <p class="small text-muted mb-0">Última actualización:</p>
+              <p class="fw-bold">{{product.updatedAt.toMillis() | date:'MMMM d, y'}}</p>
+            </div>
+          </div>
         </li>
-
-        <!-- STOCK -->
-        <li class="list-group-item border-0">
-          <p class="small text-muted m-0">Stock:</p>
-          <p class="fw-bold m-0 text-danger" *ngIf="product.stock < 1">Sin stock.</p>
-          <p class="fw-bold m-0" *ngIf="product.stock === 1">{{product.stock}} &nbsp; Unidad.</p>
-          <p class="fw-bold m-0" *ngIf="product.stock > 1">{{product.stock}} &nbsp; Unidades.</p>
-        </li>
-
-        <!-- UPDATED AT -->
-        <li class="list-group-item border-0">
-          <p class="small text-muted m-0">Última actualización:</p>
-          <p class="fw-bold m-0">{{product.updatedAt.toMillis() | date:'MMMM d, y'}}</p>
-        </li>
-
-        <!-- CREATED AT -->
-        <li class="list-group-item border-0">
-          <p class="small text-muted m-0">Registrado:</p>
-          <p class="fw-bold m-0">{{product.createdAt.toMillis() | date:'MMMM d, y'}}</p>
-        </li>
-
 
       </ul>
     </div>
   </div>
 
-
-  <!-- MODAL DELETE -->
-  <ng-template #modalDelete let-modal>
-    <div class="modal-body text-center">
-      <p class="lead">¿Desea eliminar el producto?</p>
-      <!-- BUTTON CANCEL -->
-      <button
-        type="button"
-        class="btn btn-danger me-2"
-        (click)="modal.dismiss('Cross click')"
-      >
-        <i class="bi bi-x-circle-fill me-1"></i>
-        Cancelar
-      </button>
-
-      <!-- BUTTON DELETE -->
-      <button
-        type="button"
-        class="btn btn-primary"
-        (click)="onDelete(product)"
-      >
-        <i class="bi bi-trash-fill me-1"></i>
-        Aceptar
-      </button>
-    </div>
-  </ng-template>
-
-
-  <!-- MODAL PHOTO -->
-  <ng-template #modalPhoto let-modal>
-    <div class="modal-header">
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body text-center">
-      <img class="img-fluid" src="{{imageFullSize}}" alt="{{product.description}}">
-    </div>
-  </ng-template>
-
-
-  <!-- BOTTOM BUTTONS -->
+  <!-- FOOTER - BUTTONS -->
   <div class="row fixed-bottom bg-white p-3">
     <div class="col-12 d-flex justify-content-between">
 
@@ -124,7 +97,7 @@
       <button
         type="button"
         class="btn btn-primary rounded-circle"
-        (click)="goToTemplate('listProducts')"
+        (click)="getTemplate('listProducts')"
       >
         <i class="bi bi-arrow-90deg-left fs-3"></i>
       </button>
@@ -142,11 +115,56 @@
       <button
         type="button"
         class="btn btn-primary rounded-circle"
-        (click)="goToTemplate('editProduct')"
+        (click)="getTemplate('editProduct')"
       >
         <i class="bi bi-pencil-square fs-3"></i>
       </button>
 
     </div>
   </div>
+
 </div>
+<!----------------------------------------------------->
+<!---------------- END -- PHONE DESIGN ---------------->
+<!----------------------------------------------------->
+
+
+
+
+
+<!-- MODAL DELETE -->
+<ng-template #modalDelete let-modal>
+  <div class="modal-body text-center">
+    <p class="lead">¿Desea eliminar el producto?</p>
+    <!-- BUTTON CANCEL -->
+    <button
+      type="button"
+      class="btn btn-danger me-2"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-circle-fill me-1"></i>
+      Cancelar
+    </button>
+
+    <!-- BUTTON DELETE -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onDelete(product)"
+    >
+      <i class="bi bi-trash-fill me-1"></i>
+      Aceptar
+    </button>
+  </div>
+</ng-template>
+
+
+<!-- MODAL PHOTO -->
+<ng-template #modalPhoto let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body text-center">
+    <img class="img-fluid" src="{{imageFullSize}}" alt="{{product.description}}">
+  </div>
+</ng-template>

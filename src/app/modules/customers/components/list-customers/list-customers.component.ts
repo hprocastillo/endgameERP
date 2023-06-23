@@ -13,7 +13,7 @@ export class ListCustomersComponent {
 
   /** VARIABLES **/
   page: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 4;
   searchText: string = '';
 
   getTemplate(template: string) {

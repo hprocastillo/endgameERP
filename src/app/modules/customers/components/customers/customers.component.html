@@ -9,6 +9,12 @@
     (outTemplate)="getTemplate($event)"
   ></app-list-customers>
 
+  <!-- NEW CUSTOMER FORM - TEMPLATE -->
+  <app-new-customer
+    *ngIf="template === 'newCustomer'"
+    [firebaseUser]="firebaseUser"
+    (outTemplate)="getTemplate($event)"
+  ></app-new-customer>
 
   <!-- VIEW CUSTOMER - TEMPLATE -->
   <app-view-customer
@@ -16,7 +22,6 @@
     [customer]="customerSelected"
     (outTemplate)="getTemplate($event)"
   ></app-view-customer>
-
 
   <!-- EDIT CUSTOMER FORM - TEMPLATE -->
   <app-edit-customer
@@ -27,13 +32,7 @@
   ></app-edit-customer>
 
 
-  <!-- NEW CUSTOMER FORM - TEMPLATE -->
-  <app-new-customer
-    *ngIf="template === 'newCustomer'"
-    [firebaseUser]="firebaseUser"
-    (btnCancel)="getTemplate($event)"
-    (btnSave)="getTemplate($event)"
-  ></app-new-customer>
+
 </ng-container>
 
 

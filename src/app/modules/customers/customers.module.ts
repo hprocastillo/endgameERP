@@ -18,7 +18,6 @@ import {EditCustomerComponent} from './components/edit-customer/edit-customer.co
 import {ListCustomersItemComponent} from './components/list-customers-item/list-customers-item.component';
 import {SearchCustomerPipe} from './pipes/search-customer.pipe';
 
-
 @NgModule({
   declarations: [
     CustomersComponent,
@@ -27,7 +26,7 @@ import {SearchCustomerPipe} from './pipes/search-customer.pipe';
     ViewCustomerComponent,
     EditCustomerComponent,
     ListCustomersItemComponent,
-    SearchCustomerPipe
+    SearchCustomerPipe,
   ],
   exports: [
     ListCustomersItemComponent

@@ -1,56 +1,49 @@
-<!-- PHONE DESIGN -->
-<div class="phone p-2">
+<!------------------------------------------------->
+<!-------- PHONE DESIGN --- EDIT PRODUCT ---------->
+<!---------------- CHECKED 100% ------------------->
+<!------------------------------------------------->
+<div class="phone">
 
-  <!-- TITLE -->
-  <div class="row">
-    <div class="col-10">
-      <p class="fs-1 fw-bold">Editar Producto</p>
-    </div>
-    <div class="col-2">
-      <img class="img-fluid" ngSrc="./assets/images/modules/dashboard/products.png" alt="Productos" height="128"
-           width="128" priority>
-    </div>
+  <app-header-products
+    [title]="'Editar Producto'"
+    [icon]="'./assets/images/modules/dashboard/products.png'"
+  ></app-header-products>
+
+  <!-- CATEGORY -->
+  <div class="form-floating mb-3">
+    <select
+      class="form-select"
+      id="categorySelect"
+      [(ngModel)]="product.category"
+      required>
+      <option selected>Seleccionar</option>
+      <option value="BEBIDAS">Bebidas y Gaseosas</option>
+      <option value="SNACKS">Snacks y Pickeos</option>
+      <option value="GALLETAS">Galletas</option>
+    </select>
+    <label for="categorySelect">Seleccionar Categoría</label>
   </div>
 
-  <!-------------------- FORM ---------------------->
-  <!------------- Input Phone = IPH ---------------->
-  <div class="form">
+  <!-- BRAND -->
+  <div class="form-floating mb-3">
+    <select
+      class="form-select"
+      id="brandSelect"
+      [(ngModel)]="product.brand"
+      required>
+      <option selected>Seleccionar</option>
+      <option value="COCA COLA">Coca cola</option>
+      <option value="PEPSI">Pepsi</option>
+      <option value="INKA KOLA">Inka Kola</option>
+      <option value="RELLENITA">Rellenita</option>
+      <option value="SUBLIME">Sublime</option>
+      <option value="RITZ">Ritz</option>
+    </select>
+    <label for="brandSelect">Seleccionar Marca</label>
+  </div>
 
-    <!-- CATEGORY -->
-    <div class="form-floating mb-3">
-      <select
-        class="form-select"
-        id="categorySelect"
-        [(ngModel)]="product.category"
-        required>
-        <option selected>Seleccionar</option>
-        <option value="BEBIDAS">Bebidas y Gaseosas</option>
-        <option value="SNACKS">Snacks y Pickeos</option>
-        <option value="GALLETAS">Galletas</option>
-      </select>
-      <label for="categorySelect">Seleccionar Categoría</label>
-    </div>
-
-    <!-- BRAND -->
-    <div class="form-floating mb-3">
-      <select
-        class="form-select"
-        id="brandSelect"
-        [(ngModel)]="product.brand"
-        required>
-        <option selected>Seleccionar</option>
-        <option value="COCA COLA">Coca cola</option>
-        <option value="PEPSI">Pepsi</option>
-        <option value="INKA KOLA">Inka Kola</option>
-        <option value="RELLENITA">Rellenita</option>
-        <option value="SUBLIME">Sublime</option>
-        <option value="RITZ">Ritz</option>
-      </select>
-      <label for="brandSelect">Seleccionar Marca</label>
-    </div>
-
-    <!-- DESCRIPTION -->
-    <div class="form-floating mb-3">
+  <!-- DESCRIPTION -->
+  <div class="form-floating mb-3">
     <textarea
       class="form-control"
       placeholder="Descripción"
@@ -58,116 +51,116 @@
       style="height: 100px"
       [(ngModel)]="product.description"
       required></textarea>
-      <label for="descriptionTXT">Descripción del producto</label>
-    </div>
-
-    <!-- STOCK AND PRICE -->
-    <div class="row mb-3">
-      <!-- STOCK -->
-      <div class="col-6">
-        <div class="form-floating">
-          <input
-            type="number"
-            class="form-control"
-            id="stockTXT"
-            placeholder="Stock unidades"
-            [(ngModel)]="product.stock"
-            required>
-          <label for="stockTXT">Stock unidades</label>
-        </div>
-      </div>
-      <!-- PRICE -->
-      <div class="col-6">
-        <div class="form-floating">
-          <input
-            type="number"
-            class="form-control"
-            id="priceTXT"
-            placeholder="Precio: S/."
-            [(ngModel)]="product.price"
-            required>
-          <label for="priceTXT">Precio: S/.</label>
-        </div>
-      </div>
-    </div>
-
-    <!-- BARCODE -->
-    <div class="form-floating mb-3">
-      <input
-        type="text"
-        class="form-control"
-        id="barcodeTXT"
-        placeholder="Código de barras"
-        [(ngModel)]="product.barcode"
-        required>
-      <label for="barcodeTXT">Código de barras</label>
-    </div>
-
-    <!-- PHOTO -->
-    <div class="row mb-3">
-      <div class="col-12">
-        <!-- IMAGE PREVIEW - CAMERA -->
-        <div class="container-camera text-center">
-          <ng-container *ngIf="photo_preview && photo_preview !== ''; else noPreview">
-            <p class="fs-5">Vista Previa</p>
-            <input type="file" (change)="take_photo($event)" accept="image/*;capture=camera">
-            <img class="img-fluid w-75" src="{{photo_preview}}" alt="{{photo_file.name}}">
-          </ng-container>
-
-          <ng-template #noPreview>
-            <input type="file" (change)="take_photo($event)" accept="image/*;capture=camera">
-            <img class="img-fluid w-75" ngSrc="./assets/images/general/camera.png" alt="Camera" height="128"
-                 width="128">
-            <p class="fs-5">Tomar Foto</p>
-          </ng-template>
-        </div>
-      </div>
-    </div>
-
-    <!-- TEXT HELP -->
-    <ng-container *ngIf="(photo_preview && photo_preview !=='')">
-      <div class="row">
-        <div class="col-12">
-          <p class="small text-center text-muted">(Haga click en la foto para cambiarla).</p>
-        </div>
-      </div>
-    </ng-container>
-
-
-    <!-- FOOTER - BUTTONS -->
-    <div class="row fixed-bottom bg-white p-3">
-      <div class="col-6 text-center">
-        <!-- BUTTON CANCEL -->
-        <button
-          type="reset"
-          class="btn btn-danger w-100"
-          (click)="getTemplate('viewProduct')">
-          <i class="bi bi-x-circle-fill me-2"></i>
-          Cancelar
-        </button>
-      </div>
-
-      <div class="col-6 text-center">
-        <!-- BUTTON SAVE /W LOADING EFFECT -->
-        <button
-          *ngIf="loadingEffect"
-          type="button"
-          class="btn btn-success w-100" disabled>
-          <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
-          Guardando...
-        </button>
-
-        <!-- BUTTON SAVE -->
-        <button
-          *ngIf="!loadingEffect"
-          (click)="onSubmit(product, firebaseUser)"
-          type="submit"
-          class="btn btn-success w-100">
-          <i class="bi bi-hdd-fill me-2"></i>
-          Guardar
-        </button>
-      </div>
-    </div>
-
+    <label for="descriptionTXT">Descripción del producto</label>
   </div>
+
+  <!-- STOCK AND PRICE -->
+  <div class="row mb-3">
+    <!-- STOCK -->
+    <div class="col-6">
+      <div class="form-floating">
+        <input
+          type="number"
+          class="form-control"
+          id="stockTXT"
+          placeholder="Stock unidades"
+          [(ngModel)]="product.stock"
+          required>
+        <label for="stockTXT">Stock unidades</label>
+      </div>
+    </div>
+    <!-- PRICE -->
+    <div class="col-6">
+      <div class="form-floating">
+        <input
+          type="number"
+          class="form-control"
+          id="priceTXT"
+          placeholder="Precio: S/."
+          [(ngModel)]="product.price"
+          required>
+        <label for="priceTXT">Precio: S/.</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARCODE -->
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="barcodeTXT"
+      placeholder="Código de barras"
+      [(ngModel)]="product.barcode"
+      required>
+    <label for="barcodeTXT">Código de barras</label>
+  </div>
+
+  <!-- PHOTO -->
+  <div class="row">
+    <div class="col-12">
+      <!-- IMAGE PREVIEW - CAMERA -->
+      <div class="container-camera text-center">
+        <ng-container *ngIf="photo_preview && photo_preview !== ''; else noPreview">
+          <p class="text-muted">VISTA PREVIA</p>
+          <input type="file" (change)="take_photo($event)" accept="image/*;capture=camera">
+          <img class="img-fluid w-25" src="{{photo_preview}}" alt="{{photo_file.name}}">
+        </ng-container>
+        <ng-template #noPreview>
+          <input type="file" (change)="take_photo($event)" accept="image/*;capture=camera">
+          <img class="img-fluid w-25" ngSrc="./assets/images/general/camera.png" alt="Camera" height="128"
+               width="128">
+          <p class="text-muted">TOMAR FOTO</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEXT HELP -->
+  <ng-container *ngIf="(photo_preview && photo_preview !=='')">
+    <div class="row mt-3">
+      <div class="col-12">
+        <p class="small text-center text-muted">(Haga click en la foto para cambiarla).</p>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- FOOTER - BUTTONS -->
+  <div class="row fixed-bottom bg-white p-3">
+    <div class="col-6 text-center">
+      <!-- BUTTON CANCEL -->
+      <button
+        type="reset"
+        class="btn btn-danger w-100"
+        (click)="getTemplate('viewProduct')">
+        <i class="bi bi-x-circle-fill me-2"></i>
+        Cancelar
+      </button>
+    </div>
+
+    <div class="col-6 text-center">
+      <!-- BUTTON SAVE /W LOADING EFFECT -->
+      <button
+        *ngIf="loadingEffect"
+        type="button"
+        class="btn btn-success w-100" disabled>
+        <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+        Guardando...
+      </button>
+
+      <!-- BUTTON SAVE -->
+      <button
+        *ngIf="!loadingEffect"
+        (click)="onSubmit(product, firebaseUser)"
+        type="submit"
+        class="btn btn-success w-100">
+        <i class="bi bi-hdd-fill me-2"></i>
+        Guardar
+      </button>
+    </div>
+  </div>
+
 </div>
+<!----------------------------------------------------->
+<!---------------- END -- PHONE DESIGN ---------------->
+<!----------------------------------------------------->

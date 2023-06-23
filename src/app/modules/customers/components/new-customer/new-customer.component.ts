@@ -15,8 +15,7 @@ import {DatesService} from "../../../../services/dates.service";
 
 export class NewCustomerComponent {
   @Input() firebaseUser = {} as User;
-  @Output() btnCancel = new EventEmitter<string>();
-  @Output() btnSave = new EventEmitter<string>();
+  @Output() outTemplate = new EventEmitter<string>();
 
   /** VARIABLES **/
   newCustomerForm: FormGroup;
@@ -48,8 +47,8 @@ export class NewCustomerComponent {
     });
   }
 
-  toCancel(template: string) {
-    this.btnCancel.emit(template);
+  getTemplate(template: string) {
+    this.outTemplate.emit(template);
   }
 
   getBirthday($event: any) {
@@ -121,12 +120,13 @@ export class NewCustomerComponent {
                     newCustomer.photoUrl3 = await getDownloadURL(storageRef3);
                     await this.customerService.addCustomer(newCustomer);
                     this.newCustomerForm.reset();
-                    this.btnSave.emit('listCustomers');
-
+                    this.outTemplate.emit('listCustomers');
                   })
                   .catch((e) => console.log(e));
+
               })
               .catch((e) => console.log(e));
+
           })
           .catch((e) => console.log(e));
 
@@ -135,7 +135,7 @@ export class NewCustomerComponent {
       } else if (!this.photo1_file && !this.photo2_file && !this.photo3_file) {
         await this.customerService.addCustomer(newCustomer);
         this.newCustomerForm.reset();
-        this.btnSave.emit('listCustomers');
+        this.outTemplate.emit('listCustomers');
 
 
         /********************** UPLOAD JUST PHOTO 1 *************************/
@@ -147,7 +147,7 @@ export class NewCustomerComponent {
             newCustomer.photoUrl1 = await getDownloadURL(storageRef1);
             await this.customerService.addCustomer(newCustomer);
             this.newCustomerForm.reset();
-            this.btnSave.emit('listCustomers');
+            this.outTemplate.emit('listCustomers');
 
           })
           .catch((e) => console.log(e));
@@ -162,7 +162,7 @@ export class NewCustomerComponent {
             newCustomer.photoUrl2 = await getDownloadURL(storageRef2);
             await this.customerService.addCustomer(newCustomer);
             this.newCustomerForm.reset();
-            this.btnSave.emit('listCustomers');
+            this.outTemplate.emit('listCustomers');
 
           })
           .catch((e) => console.log(e));
@@ -177,7 +177,7 @@ export class NewCustomerComponent {
             newCustomer.photoUrl3 = await getDownloadURL(storageRef3);
             await this.customerService.addCustomer(newCustomer);
             this.newCustomerForm.reset();
-            this.btnSave.emit('listCustomers');
+            this.outTemplate.emit('listCustomers');
 
           })
           .catch((e) => console.log(e));
@@ -199,10 +199,10 @@ export class NewCustomerComponent {
                 newCustomer.photoUrl2 = await getDownloadURL(storageRef2);
                 await this.customerService.addCustomer(newCustomer);
                 this.newCustomerForm.reset();
-                this.btnSave.emit('listCustomers');
-
+                this.outTemplate.emit('listCustomers');
               })
               .catch((e) => console.log(e));
+
           })
           .catch((e) => console.log(e));
 
@@ -223,10 +223,10 @@ export class NewCustomerComponent {
                 newCustomer.photoUrl3 = await getDownloadURL(storageRef3);
                 await this.customerService.addCustomer(newCustomer);
                 this.newCustomerForm.reset();
-                this.btnSave.emit('listCustomers');
-
+                this.outTemplate.emit('listCustomers');
               })
               .catch((e) => console.log(e));
+
           })
           .catch((e) => console.log(e));
 
@@ -247,10 +247,10 @@ export class NewCustomerComponent {
                 newCustomer.photoUrl3 = await getDownloadURL(storageRef3);
                 await this.customerService.addCustomer(newCustomer);
                 this.newCustomerForm.reset();
-                this.btnSave.emit('listCustomers');
-
+                this.outTemplate.emit('listCustomers');
               })
               .catch((e) => console.log(e));
+
           })
           .catch((e) => console.log(e));
       }

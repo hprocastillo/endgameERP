@@ -57,11 +57,13 @@
     display: none;
   }
   .container-camera {
+    margin: auto;
     position: relative;
     overflow: hidden;
+    width: 40%;
   }
 
-  .container-camera[type=file] {
+  .container-camera input[type=file] {
     top: 0;
     left: 0;
     position: absolute;

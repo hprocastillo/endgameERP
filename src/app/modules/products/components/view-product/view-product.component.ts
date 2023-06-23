@@ -18,7 +18,7 @@ export class ViewProductComponent {
   constructor(private modalService: NgbModal, private productService: ProductService) {
   }
 
-  goToTemplate(template: string) {
+  getTemplate(template: string) {
     this.outTemplate.emit(template);
   }
 

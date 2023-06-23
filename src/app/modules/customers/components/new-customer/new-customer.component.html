@@ -1,7 +1,7 @@
-<!------------------------------------>
-<!-- PHONE DESIGN ---- NEW CUSTOMER -->
-<!-- CHECKED 100% -------------------->
-<!------------------------------------>
+<!-------------------- NEW CUSTOMER --------------------->
+<!-------------------- CHECKED 100% --------------------->
+<!------------------------------------------------------->
+<!-------------------- PHONE DESIGN --------------------->
 <div class="phone">
 
   <!-- HEADER -->
@@ -10,7 +10,7 @@
       <p class="fs-1 fw-bold">Nuevo Cliente</p>
     </div>
     <div class="col-2">
-      <img class="img-fluid" ngSrc="./assets/images/modules/dashboard/customers.png" alt="Nuevo Cliente" height="128"
+      <img class="img-fluid" ngSrc="./assets/images/modules/dashboard/customers.png" alt="NUEVO CLIENTE" height="128"
            width="128" priority>
     </div>
   </div>
@@ -128,62 +128,62 @@
       </div>
     </div>
 
-
     <!-- PHOTOS -->
-    <div class="row">
-      <div class="col-12 d-flex justify-content-between">
-
-        
-        <!-- PHOTO 1 -->
+    <div class="row mt-5">
+      <!-- PHOTO 1 -->
+      <div class="col-4">
         <div class="container-camera text-center">
           <ng-container *ngIf="photo1_preview && photo1_preview !== ''; else noPreview1">
             <input type="file" (change)="take_photo1($event)" accept="image/*;capture=camera">
             <img class="img-fluid w-75" src="{{photo1_preview}}" alt="{{photo1_file.name}}">
-            <p class="text-muted">Foto Cliente</p>
+            <p class="text-muted">FOTO CLIENTE</p>
           </ng-container>
 
           <ng-template #noPreview1>
             <input type="file" (change)="take_photo1($event)" accept="image/*;capture=camera">
-            <img class="img-fluid w-75" ngSrc="./assets/images/general/camera.png" alt="Camera" height="128"
+            <img class="img-fluid w-75" ngSrc="./assets/images/general/camera/camera.png" alt="Camera" height="128"
                  width="128" priority>
-            <p class="text-muted">Foto Cliente</p>
+            <p class="text-muted">FOTO CLIENTE</p>
           </ng-template>
         </div>
+      </div>
 
-        <!-- PHOTO 2 -->
+      <!-- PHOTO 2 -->
+      <div class="col-4">
         <div class="container-camera text-center">
           <ng-container *ngIf="photo2_preview && photo2_preview !== ''; else noPreview2">
             <input type="file" (change)="take_photo2($event)" accept="image/*;capture=camera">
-            <img class="img-fluid w-75 mb-3" src="{{photo2_preview}}" alt="{{photo2_file.name}}">
-            <p class="text-muted">Foto DNI</p>
+            <img class="img-fluid w-75" src="{{photo2_preview}}" alt="{{photo2_file.name}}">
+            <p class="text-muted">FOTO DNI</p>
           </ng-container>
 
           <ng-template #noPreview2>
             <input type="file" (change)="take_photo2($event)" accept="image/*;capture=camera">
-            <img class="img-fluid w-75" ngSrc="./assets/images/general/camera.png" alt="Camera" height="128"
+            <img class="img-fluid w-75" ngSrc="./assets/images/general/camera/camera.png" alt="Camera" height="128"
                  width="128" priority>
-            <p class="text-muted">Foto DNI</p>
+            <p class="text-muted">FOTO DNI</p>
           </ng-template>
         </div>
+      </div>
 
-        <!-- PHOTO 3 -->
+      <!-- PHOTO 3 -->
+      <div class="col-4">
         <div class="container-camera text-center">
           <ng-container *ngIf="photo3_preview && photo3_preview !== ''; else noPreview3">
             <input type="file" (change)="take_photo3($event)" accept="image/*;capture=camera">
-            <img class="img-fluid w-75 mb-3" src="{{photo3_preview}}" alt="{{photo3_file.name}}">
-            <p class="text-muted">Foto Redes</p>
+            <img class="img-fluid w-75" src="{{photo3_preview}}" alt="{{photo3_file.name}}">
+            <p class="text-muted">FOTO REDES</p>
           </ng-container>
 
           <ng-template #noPreview3>
             <input type="file" (change)="take_photo3($event)" accept="image/*;capture=camera">
-            <img class="img-fluid w-75" ngSrc="./assets/images/general/camera.png" alt="Camera" height="128"
+            <img class="img-fluid w-75" ngSrc="./assets/images/general/camera/camera.png" alt="Camera" height="128"
                  width="128" priority>
-            <p class="text-muted">Foto Redes</p>
+            <p class="text-muted">FOTO REDES</p>
           </ng-template>
         </div>
       </div>
     </div>
-
 
     <!-- TEXT HELP -->
     <ng-container
@@ -198,17 +198,19 @@
     <!-- FOOTER - BUTTONS -->
     <div class="row fixed-bottom bg-white p-3">
       <div class="col-6 text-center">
+
         <!-- BUTTON CANCEL -->
         <button
           type="reset"
           class="btn btn-danger w-100"
-          (click)="toCancel('listCustomers')">
+          (click)="getTemplate('listCustomers')">
           <i class="bi bi-x-circle-fill me-2"></i>
           Cancelar
         </button>
-      </div>
 
+      </div>
       <div class="col-6 text-center">
+
         <!-- BUTTON SAVE /W LOADING EFFECT -->
         <button
           *ngIf="loadingEffect"
@@ -226,29 +228,29 @@
           <i class="bi bi-hdd-fill me-2"></i>
           Guardar
         </button>
+
       </div>
     </div>
+
   </form>
 </div>
 
 
-<!------------------------------------------------------>
-<!------------------ DESKTOP DESIGN -------------------->
-<div class="desktop p-3">
-
-  <!--------------------- FORM ----------------------->
-  <!------------- Input Desktop = IDK ---------------->
+<!------------------------------------------------------->
+<!------------------- DESKTOP DESIGN -------------------->
+<div class="desktop">
   <form [formGroup]="newCustomerForm" (ngSubmit)="onSubmit(firebaseUser)">
 
     <!-- HEADER SECTION -->
-    <div class="card shadow p-2 mb-3 bg-body-tertiary rounded">
+    <div class="card shadow p-2 mb-2 bg-body-tertiary rounded">
       <div class="row">
         <!-- TITLE -->
         <div class="col-xl-6 d-flex justify-content-xl-start">
-          <p class="fs-4 fw-bold ms-2 m-0">Nuevo Cliente</p>
-          <img class="ms-2" ngSrc="./assets/images/modules/dashboard/customers.png" alt="Clientes" height="32"
+          <img class="me-3" ngSrc="./assets/images/modules/dashboard/customers.png" alt="Clientes" height="32"
                width="32"
                priority>
+          <p class="fs-4 fw-bold m-0">Nuevo Cliente</p>
+
         </div>
 
         <!-- BUTTONS -->
@@ -257,7 +259,7 @@
           <button
             type="reset"
             class="btn btn-danger me-2"
-            (click)="toCancel('listCustomers')">
+            (click)="getTemplate('listCustomers')">
             <i class="bi bi-x-circle-fill me-2"></i>
             Cancelar
           </button>
@@ -283,10 +285,15 @@
       </div>
     </div>
 
-    <!-- FORM SECTION -->
+    <!-- FORM -->
     <div class="row">
-      <div class="col-xl-5">
-        <div class="card shadow p-3 bg-body-tertiary rounded" style="height: 550px">
+
+      <!-- DATA PROFILE -->
+      <div class="col-xl-4">
+        <div class="card shadow p-2 bg-body-tertiary rounded">
+          <p class="fs-5 fw-bold text-center mb-0">Datos de Perfil</p>
+          <hr class="text-muted">
+
           <!-- FULL NAME -->
           <div class="form-floating mb-3">
             <input
@@ -309,6 +316,7 @@
               required>
             <label for="email-IDK">Correo electrónico</label>
           </div>
+
           <!-- BIRTHDAY AND DNI -->
           <div class="row mb-3">
             <!-- BIRTHDAY -->
@@ -337,6 +345,7 @@
               </div>
             </div>
           </div>
+
           <!-- PHONE AND USER SYSTEM -->
           <div class="row mb-3">
             <!-- PHONE -->
@@ -365,8 +374,9 @@
               </div>
             </div>
           </div>
+
           <!-- FACEBOOK AND INSTAGRAM -->
-          <div class="row mb-5">
+          <div class="row mb-3">
             <!-- FACEBOOK -->
             <div class="col-6">
               <div class="form-floating">
@@ -395,11 +405,10 @@
         </div>
       </div>
 
-      <!-- UPLOAD PHOTOS SECTION -->
-      <div class="col-xl-7">
-        <div class="card shadow p-2 bg-body-tertiary rounded" style="height: 550px">
-          <!-- TITLE SECTION -->
-          <p class="fs-4 fw-bold text-center mb-0">Subir Fotos</p>
+      <!-- UPLOAD PHOTOS -->
+      <div class="col-xl-8">
+        <div class="card shadow p-2 bg-body-tertiary rounded">
+          <p class="fs-5 fw-bold text-center mb-0">Subir Fotos</p>
           <hr class="text-muted">
 
           <!-- PHOTOS -->
@@ -407,19 +416,22 @@
             <!-- PHOTO 1 -->
             <div class="col-xl-4 text-center border-end">
               <!-- CAMERA -->
-              <div class="container-camera-desktop" style="margin-bottom: 100px">
+              <div class="container-camera">
                 <input type="file" (change)="take_photo1($event)" accept="image/*;capture=camera">
-                <img class="img-fluid w-50" src="./assets/images/general/camera.png" alt="Camera">
-                <p class="text-muted">Foto Cliente</p>
+                <img class="img-fluid w-50" src="./assets/images/general/camera/camera.png" alt="Camera">
+                <p class="text-muted">FOTO CLIENTE</p>
               </div>
+              <br>
+              <br>
 
               <!-- PREVIEW -->
               <div class="image-preview">
-                <ng-container *ngIf="photo1_preview && photo1_preview !== ''; else defaultPreview">
+                <ng-container *ngIf="photo1_preview && photo1_preview !== ''; else defaultPreview1">
                   <img class="img-fluid" style="max-width: 128px" src="{{photo1_preview}}" alt="{{photo1_file.name}}">
                 </ng-container>
-                <ng-template #defaultPreview>
-                  <img class="img-fluid" src="./assets/images/modules/customers/customer.png" alt="preview">
+                <ng-template #defaultPreview1>
+                  <img class="img-fluid w-50" ngSrc="./assets/images/general/camera/profile-photo.png" alt="preview"
+                       height="128" width="128">
                 </ng-template>
               </div>
             </div>
@@ -427,19 +439,21 @@
             <!-- PHOTO 2 -->
             <div class="col-xl-4 text-center border-end">
               <!-- CAMERA -->
-              <div class="container-camera-desktop" style="margin-bottom: 100px">
+              <div class="container-camera">
                 <input type="file" (change)="take_photo2($event)" accept="image/*;capture=camera">
-                <img class="img-fluid w-50" src="./assets/images/general/camera.png" alt="Camera">
-                <p class="text-muted">Foto DNI</p>
+                <img class="img-fluid w-50" src="./assets/images/general/camera/camera.png" alt="Camera">
+                <p class="text-muted">FOTO DNI</p>
               </div>
+              <br>
+              <br>
 
               <!-- PREVIEW -->
               <div class="image-preview">
-                <ng-container *ngIf="photo2_preview && photo2_preview !== ''; else defaultPreview">
+                <ng-container *ngIf="photo2_preview && photo2_preview !== ''; else defaultPreview2">
                   <img class="img-fluid" style="max-width: 128px" src="{{photo2_preview}}" alt="{{photo2_file.name}}">
                 </ng-container>
-                <ng-template #defaultPreview>
-                  <img class="img-fluid" src="./assets/images/modules/customers/customer.png" alt="preview">
+                <ng-template #defaultPreview2>
+                  <img class="img-fluid w-50" src="./assets/images/general/camera/dni-photo.png" alt="preview">
                 </ng-template>
               </div>
             </div>
@@ -447,19 +461,21 @@
             <!-- PHOTO 3 -->
             <div class="col-xl-4 text-center">
               <!-- CAMERA -->
-              <div class="container-camera-desktop" style="margin-bottom: 100px">
+              <div class="container-camera">
                 <input type="file" (change)="take_photo3($event)" accept="image/*;capture=camera">
-                <img class="img-fluid w-50" src="./assets/images/general/camera.png" alt="Camera">
-                <p class="text-muted">Foto Redes</p>
+                <img class="img-fluid w-50" src="./assets/images/general/camera/camera.png" alt="Camera">
+                <p class="text-muted">FOTO REDES</p>
               </div>
+              <br>
+              <br>
 
               <!-- PREVIEW -->
               <div class="image-preview">
-                <ng-container *ngIf="photo3_preview && photo3_preview !== ''; else defaultPreview">
+                <ng-container *ngIf="photo3_preview && photo3_preview !== ''; else defaultPreview3">
                   <img class="img-fluid" style="max-width: 128px" src="{{photo3_preview}}" alt="{{photo3_file.name}}">
                 </ng-container>
-                <ng-template #defaultPreview>
-                  <img class="img-fluid" src="./assets/images/modules/customers/customer.png" alt="preview">
+                <ng-template #defaultPreview3>
+                  <img class="img-fluid w-50" src="./assets/images/general/camera/social-photo.png" alt="preview">
                 </ng-template>
               </div>
             </div>

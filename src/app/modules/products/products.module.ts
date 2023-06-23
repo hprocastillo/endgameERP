@@ -15,6 +15,7 @@ import {NgbCarousel, NgbPagination, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
 import { SettingsProductsComponent } from './components/settings-products/settings-products.component';
 import { CategoriesProductsComponent } from './components/categories-products/categories-products.component';
 import { BrandsProductsComponent } from './components/brands-products/brands-products.component';
+import { HeaderProductsComponent } from './components/header-products/header-products.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { BrandsProductsComponent } from './components/brands-products/brands-pro
     SearchProductPipe,
     SettingsProductsComponent,
     CategoriesProductsComponent,
-    BrandsProductsComponent
+    BrandsProductsComponent,
+    HeaderProductsComponent
   ],
     imports: [
         CommonModule,

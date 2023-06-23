@@ -10,11 +10,9 @@ import {ProductService} from "../../services/product.service";
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-
   template: string = 'listProducts';
   productSelected = {} as Product;
   listProducts: Product[] = [];
-
   private unsubscribe$ = new Subject<boolean>();
 
   constructor(public authService: AuthService, private productService: ProductService) {

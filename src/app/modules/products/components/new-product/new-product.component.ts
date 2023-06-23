@@ -61,7 +61,7 @@ export class NewProductComponent {
       newProduct.createdBy = firebaseUser.uid;
       newProduct.updatedBy = firebaseUser.uid;
 
-      /******** UPLOAD PHOTO *********/
+      /** UPLOAD PHOTO **/
       if (this.photo_file) {
         const storageRef = ref(this.storage, `products/${this.photo_file.name}`);
         uploadBytes(storageRef, this.photo_file)

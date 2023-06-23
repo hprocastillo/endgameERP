@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from "../../interfaces/product";
+
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
@@ -19,7 +20,7 @@ export class ListProductsComponent {
     this.outTemplate.emit(template);
   }
 
-  getProduct(product: Product) {
+  getProductSelected(product: Product) {
     this.productSelected.emit(product);
   }
 }
